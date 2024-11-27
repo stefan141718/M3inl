@@ -3,6 +3,7 @@
 void setup() {
     pinMode(LED_BUILTIN, OUTPUT);
     pinMode(2, INPUT_PULLUP);
+    pinMode(5, INPUT);
     Serial.begin(9600);  
 }
 
@@ -17,9 +18,9 @@ void loop() {
     digitalWrite(LED_BUILTIN, currentvalue);
 
     if (currentvalue == LOW) {
-      int val = analogRead(A5);  
-      Serial.println(val < 512 ? "Tänt " : "Släckt ");
+      int val = digitalRead(5);  
+      Serial.println(val == LOW ? "Tänt " : "Släckt ");
     }
-
+    
     delay(500);   
 }
